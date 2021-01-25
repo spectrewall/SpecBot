@@ -49,7 +49,7 @@ client.on("message", async (message) => {
       let Trahaearn = args.search("Trahaearn");
       let Warbands = args.search("Warbands");
 
-      let canal = client.channels.cache.get("803000390508478474");
+      let canal = client.channels.cache.get("803085418450780180");
 
       if (Warbands != -1) {
         let Warbands_Role = message.guild.roles.cache.find(
