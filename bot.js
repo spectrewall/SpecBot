@@ -50,86 +50,85 @@ client.on("message", async (message) => {
       let Warbands = args.search("Warbands");
 
       let canal = client.channels.cache.get("803085418450780180");
-      let reply;
 
       if (Warbands != -1) {
         let Warbands_Role = message.guild.roles.cache.find(
-          (Role) => role.name === "Warbands"
+          (role) => role.name === "Warbands"
         );
-        reply = canal.send(
-          `@&${Warbands_Role.id} O Wilderness Warbands irá começar em 15 minutos`
+        let reply1 = canal.send(
+          `<@&${Warbands_Role.id}> O Wilderness Warbands irá começar em 15 minutos`
         );
       }
 
       if (Amlodd != -1) {
         let Amlodd_Role = message.guild.roles.cache.find(
-          (Role) => role.name === "Amlodd"
+          (role) => role.name === "Amlodd"
         );
-        reply = canal.send(
-          `@&${Amlodd_Role.id} A voz de Seren agora está ativa no distrito dos Amlodd`
+        let reply2 = canal.send(
+          `<@&${Amlodd_Role.id}> A voz de Seren agora está ativa no distrito dos Amlodd`
         );
       }
 
       if (Cadarn != -1) {
         let Cadarn_Role = message.guild.roles.cache.find(
-          (Role) => role.name === "Cadarn"
+          (role) => role.name === "Cadarn"
         );
-        reply = canal.send(
-          `@&${Cadarn_Role} A voz de Seren agora está ativa no distrito dos Cadarn`
+        let reply3 = canal.send(
+          `<@&${Cadarn_Role.id}> A voz de Seren agora está ativa no distrito dos Cadarn`
         );
       }
 
       if (Crwys != -1) {
         let Crwys_Role = message.guild.roles.cache.find(
-          (Role) => role.name === "Crwys"
+          (role) => role.name === "Crwys"
         );
-        reply = canal.send(
-          `@&${Crwys_Role.id} A voz de Seren Agora está ativa no distrito dos Crwys`
+        let reply4 = canal.send(
+          `<@&${Crwys_Role.id}> A voz de Seren Agora está ativa no distrito dos Crwys`
         );
       }
 
       if (Hefin != -1) {
         let Hefin_Role = message.guild.roles.cache.find(
-          (Role) => Role.name === "Hefin"
+          (role) => role.name === "Hefin"
         );
-        reply = canal.send(
+        let reply5 = canal.send(
           `<@&${Hefin_Role.id}> A voz de Seren Agora está ativa no distrito dos Hefin`
         );
       }
 
       if (Iorwerth != -1) {
         let Iorwerth_Role = message.guild.roles.cache.find(
-          (Role) => role.name === "Iorwerth"
+          (role) => role.name === "Iorwerth"
         );
-        reply = canal.send(
-          `@&${Iorwerth_Role.id} A voz de Seren Agora está ativa no distrito dos Iorwerth`
+        let reply6 = canal.send(
+          `<@&${Iorwerth_Role.id}> A voz de Seren Agora está ativa no distrito dos Iorwerth`
         );
       }
 
       if (Ithell != -1) {
         let Ithell_Role = message.guild.roles.cache.find(
-          (Role) => role.name === "Ithell"
+          (role) => role.name === "Ithell"
         );
-        reply = canal.send(
-          `@&${Ithell_Role.id} A voz de Seren Agora está ativa no distrito dos Ithell`
+        let reply7 = canal.send(
+          `<@&${Ithell_Role.id}> A voz de Seren Agora está ativa no distrito dos Ithell`
         );
       }
 
       if (Meilyr != -1) {
         let Meilyr_Role = message.guild.roles.cache.find(
-          (Role) => role.name === "Meilyr"
+          (role) => role.name === "Meilyr"
         );
-        reply = canal.send(
-          `@&${Meilyr_Role.id} A voz de Seren Agora está ativa no distrito dos Meilyr`
+        let reply8 = canal.send(
+          `<@&${Meilyr_Role.id}> A voz de Seren Agora está ativa no distrito dos Meilyr`
         );
       }
 
       if (Trahaearn != -1) {
         let Trahaearn_Role = message.guild.roles.cache.find(
-          (Role) => role.name === "Trahaearn"
+          (role) => role.name === "Trahaearn"
         );
-        reply = canal.send(
-          `@&${Trahaearn} A voz de Seren Agora está ativa no distrito dos Trahaearn`
+        let reply9 = canal.send(
+          `<@&${Trahaearn_Role.id}> A voz de Seren Agora está ativa no distrito dos Trahaearn`
         );
       }
 
