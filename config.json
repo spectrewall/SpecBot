@@ -1,3 +1,41 @@
 {
-	"prefix": "!"	  
+	"prefix": "!",
+	"events": [
+		{
+			"name": "Amlodd",
+			"message": "A voz de Seren agora está ativa no distrito dos Amlodd"
+		},
+		{
+			"name": "Cadarn",
+			"message": "A voz de Seren agora está ativa no distrito dos Cadarn"
+		},
+		{
+			"name": "Crwys",
+			"message": "A voz de Seren agora está ativa no distrito dos Crwys"
+		},
+		{
+			"name": "Hefin",
+			"message": "A voz de Seren agora está ativa no distrito dos Hefin"
+		},
+		{
+			"name": "Iorwerth",
+			"message": "A voz de Seren agora está ativa no distrito dos Iorwerth"
+		},
+		{
+			"name": "Ithell",
+			"message": "A voz de Seren agora está ativa no distrito dos Ithell"
+		},
+		{
+			"name": "Meilyr",
+			"message": "A voz de Seren agora está ativa no distrito dos Meilyr"
+		},
+		{
+			"name": "Trahaearn",
+			"message": "A voz de Seren agora está ativa no distrito dos Trahaearn"
+		},
+		{
+			"name": "Warbands",
+			"message": "O Wilderness Warbands irá começar em 15 minutos"
+		}
+	]
 }
