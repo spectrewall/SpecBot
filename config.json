@@ -46,5 +46,19 @@
 			"message": "O Wilderness Warbands irá começar em 15 minutos",
 			"color": "#660000"
 		}
+	],
+	"comandos": [
+		{
+			"name": "setrsclock",
+			"desc": "Liga o RSClockTracker no canal em que for usado. (1 por servidor)"
+		},
+		{
+			"name": "setrsclockoff",
+			"desc": "Desliga o RSClockTracker no servidor."
+		},
+		{
+			"name": "setrsclockroles",
+			"desc": "Cria os cargos para o RSClockTracker"
+		}
 	]
 }
