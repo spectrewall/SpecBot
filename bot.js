@@ -29,7 +29,7 @@ client.on("ready", () => {
       client.channels.cache.size
     } canais, em ${client.guilds.cache.size} servidores.`
   );
-  client.user.setActivity(`RuneScape`);
+  client.user.setActivity("!help");
   moment.locale("pt-br");
   console.log(`Horario de inicialização: ${moment().format(`LT`)}.`);
 
