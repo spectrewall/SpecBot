@@ -103,13 +103,21 @@ client.on("guildCreate", (guild) => {
   );
 });
 
-client.on("guildDelete", (guild) => {
-  console.log(`O bot foi removido do servidor: ${guild.name} (id:{guild.id})`);
+client.on("guildDelete", async (guild) => {
+  console.log(`O bot foi removido do servidor: ${guild.name} (id:${guild.id})`);
+  const RegisteredGuild = await mongoose.model("guilds");
+  await RegisteredGuild.findOneAndDelete(
+    { GUILD_ID: guild.id },
+    function (err, obj) {
+      if (obj) console.log(obj + "Removed from Mongo.");
+      else console.log("It was not registered in Mongo.");
+    }
+  );
 });
 
 client.on("message", async (message) => {
   if (message.channel.type === "dm") return;
-  //if (message.author.bot) return
+  if (message.author.bot) return;
   if (!message.content.startsWith(prefix)) return;
   if (!message.member)
     message.member = await message.guild.fetchMember(message);
