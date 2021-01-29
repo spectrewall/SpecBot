@@ -3,39 +3,62 @@
 	"events": [
 		{
 			"name": "Amlodd",
-			"message": "A voz de Seren agora está ativa no distrito dos Amlodd"
+			"message": "A voz de Seren agora está ativa no distrito dos Amlodd",
+			"color": "#0082ff"
 		},
 		{
 			"name": "Cadarn",
-			"message": "A voz de Seren agora está ativa no distrito dos Cadarn"
+			"message": "A voz de Seren agora está ativa no distrito dos Cadarn",
+			"color": "#007900"
 		},
 		{
 			"name": "Crwys",
-			"message": "A voz de Seren agora está ativa no distrito dos Crwys"
+			"message": "A voz de Seren agora está ativa no distrito dos Crwys",
+			"color": "#93ff00"
 		},
 		{
 			"name": "Hefin",
-			"message": "A voz de Seren agora está ativa no distrito dos Hefin"
+			"message": "A voz de Seren agora está ativa no distrito dos Hefin",
+			"color": "#ff0000"
 		},
 		{
 			"name": "Iorwerth",
-			"message": "A voz de Seren agora está ativa no distrito dos Iorwerth"
+			"message": "A voz de Seren agora está ativa no distrito dos Iorwerth",
+			"color": "#020202"
 		},
 		{
 			"name": "Ithell",
-			"message": "A voz de Seren agora está ativa no distrito dos Ithell"
+			"message": "A voz de Seren agora está ativa no distrito dos Ithell",
+			"color": "#e0e0e0"
 		},
 		{
 			"name": "Meilyr",
-			"message": "A voz de Seren agora está ativa no distrito dos Meilyr"
+			"message": "A voz de Seren agora está ativa no distrito dos Meilyr",
+			"color": "#00ffca"
 		},
 		{
 			"name": "Trahaearn",
-			"message": "A voz de Seren agora está ativa no distrito dos Trahaearn"
+			"message": "A voz de Seren agora está ativa no distrito dos Trahaearn",
+			"color": "#e41a6d"
 		},
 		{
 			"name": "Warbands",
-			"message": "O Wilderness Warbands irá começar em 15 minutos"
+			"message": "O Wilderness Warbands irá começar em 15 minutos",
+			"color": "#660000"
+		}
+	],
+	"comandos": [
+		{
+			"name": "setrsclock",
+			"desc": "Liga o RSClockTracker no canal em que for usado. (1 por servidor)"
+		},
+		{
+			"name": "setrsclockoff",
+			"desc": "Desliga o RSClockTracker no servidor."
+		},
+		{
+			"name": "setrsclockroles",
+			"desc": "Cria os cargos para o RSClockTracker"
 		}
 	]
 }

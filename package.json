@@ -15,7 +15,9 @@
     "dotenv": "^8.2.0",
     "fs": "0.0.1-security",
     "moment": "^2.24.0",
+    "mongoose": "^5.11.13",
     "mysql": "^2.18.1",
+    "nodemon": "^2.0.7",
     "twit": "^2.2.11"
   }
 }
