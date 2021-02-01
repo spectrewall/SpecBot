@@ -155,7 +155,9 @@ client.on("ready", () => {
     const RegisteredGuild = mongoose.model("guilds");
     RegisteredGuild.find({}, function (err, guildsids) {
       if (err) throw err;
-      console.log(guildsids.length);
+      console.log(
+        `Enviando atualização do RSClockTracker para ${guildsids.length} servidores.`
+      );
       guildsids.forEach(async function (element, index, array) {
         let messages = [];
         const channel = await client.channels.fetch(
@@ -176,7 +178,7 @@ client.on("ready", () => {
           }
         });
 
-        channel.send(messages.join("\n"));
+        if (messages.length != 0) channel.send(messages.join("\n"));
       });
     });
   });
