@@ -21,6 +21,7 @@
     "mongoose": "^5.11.13",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.7",
+    "spotify-url-info": "^2.2.0",
     "twit": "^2.2.11"
   }
 }

@@ -59,7 +59,7 @@ client.distube
     let msgID;
     let embed = new Discord.MessageEmbed()
       .setDescription(
-        `[${playlist.name}](${playlist.url})\n${playlist.total_items} Músicas`
+        `[${playlist.name}](${playlist.url})\n${playlist.songs.length} Músicas`
       )
       .setTimestamp()
       .setColor("0a1f29")
@@ -67,7 +67,7 @@ client.distube
         `Adicionado por ${message.author.tag}`,
         `${message.author.displayAvatarURL()}`
       )
-      .setThumbnail(song.thumbnail)
+      .setThumbnail(playlist.thumbnail.url)
       .setTitle("PlayList Adicionada!");
 
     msgID = await message.channel.send(embed);

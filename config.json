@@ -53,7 +53,7 @@
 			"desc": "Liga o RSClockTracker no canal em que for usado. (1 por servidor)"
 		},
 		{
-			"name": "**setrsclockoff**",
+			"name": "**setrsclock**",
 			"desc": "Desliga o RSClockTracker no servidor."
 		},
 		{
