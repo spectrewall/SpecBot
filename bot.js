@@ -5,10 +5,92 @@ const { Client, Collection } = Discord;
 const mongoose = require("mongoose");
 const { prefix, events } = require("./config.json");
 const moment = require("moment");
+const DisTube = require("distube");
 
-const client = new Client();
+const client = new Client({
+  partials: ["MESSAGE", "CHANNEL", "REACTION"],
+});
 client.commands = new Collection();
 client.aliases = new Collection();
+
+//DISTUBE
+
+client.distube = new DisTube(client, {
+  searchSongs: false,
+  emitNewSongOnly: true,
+});
+
+client.distube
+  .on("playSong", async (message, queue, song) => {
+    let msgID;
+    let embed = new Discord.MessageEmbed()
+      .setDescription(
+        `[${song.name}](${song.url})\nDuração: ${song.formattedDuration}`
+      )
+      .setTimestamp()
+      .setColor("0a1f29")
+      .setFooter(
+        `Adicionado por ${message.author.tag}`,
+        `${message.author.displayAvatarURL()}`
+      )
+      .setThumbnail(song.thumbnail)
+      .setTitle("Tocando Agora");
+
+    msgID = await message.channel.send(embed);
+  })
+  .on("addSong", async (message, queue, song) => {
+    let msgID;
+    let embed = new Discord.MessageEmbed()
+      .setDescription(
+        `[${song.name}](${song.url})\nDuração: ${song.formattedDuration}`
+      )
+      .setTimestamp()
+      .setColor("0a1f29")
+      .setFooter(
+        `Adicionado por ${message.author.tag}`,
+        `${message.author.displayAvatarURL()}`
+      )
+      .setThumbnail(song.thumbnail)
+      .setTitle("Adicionado a Fila!");
+
+    msgID = await message.channel.send(embed);
+  })
+  .on("addList", async (message, queue, playlist) => {
+    let msgID;
+    let embed = new Discord.MessageEmbed()
+      .setDescription(
+        `[${playlist.name}](${playlist.url})\n${playlist.total_items} Músicas`
+      )
+      .setTimestamp()
+      .setColor("0a1f29")
+      .setFooter(
+        `Adicionado por ${message.author.tag}`,
+        `${message.author.displayAvatarURL()}`
+      )
+      .setThumbnail(song.thumbnail)
+      .setTitle("PlayList Adicionada!");
+
+    msgID = await message.channel.send(embed);
+  })
+  .on("playList", async (message, queue, playlist, song) => {
+    let msgID;
+    let embed = new Discord.MessageEmbed()
+      .setDescription(
+        `[${playlist.name}](${playlist.url})\n${playlist.songs.length} Músicas\n\n**Tocando Agora**\n[${song.name}](${song.url})\nDuração: ${song.formattedDuration}`
+      )
+      .setTimestamp()
+      .setColor("0a1f29")
+      .setFooter(
+        `Adicionado por ${message.author.tag}`,
+        `${message.author.displayAvatarURL()}`
+      )
+      .setThumbnail(song.thumbnail)
+      .setTitle("PlayList Adicionada!");
+
+    msgID = await message.channel.send(embed);
+  });
+
+//TWIT SETTINGS
 
 const T = new Twit({
   consumer_key: process.env.TWITTER_CONSUMER_KEY,
@@ -19,19 +101,22 @@ const T = new Twit({
   strictSSL: true, // optional - requires SSL certificates to be valid.
 });
 
+//HANDLER SETTING
+
 ["command"].forEach((handler) => {
   require(`./handler/${handler}`)(client);
 });
 
 client.on("ready", () => {
+  //LOG MESSAGES
   console.log(
-    `Bot foi iniciado, com ${client.users.cache.size - 1} usuarios, em ${
+    `Bot foi iniciado, com ${client.users.cache.size - 1} usuários, em ${
       client.channels.cache.size
     } canais, em ${client.guilds.cache.size} servidores.`
   );
   client.user.setActivity("!help");
   moment.locale("pt-br");
-  console.log(`Horario de inicialização: ${moment().format(`LT`)}.`);
+  console.log(`Horário de inicialização: ${moment().format(`LT`)}.`);
 
   //MongoDB connection
   mongoose

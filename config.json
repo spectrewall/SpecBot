@@ -49,15 +49,15 @@
 	],
 	"comandos": [
 		{
-			"name": "setrsclock",
+			"name": "**setrsclock**",
 			"desc": "Liga o RSClockTracker no canal em que for usado. (1 por servidor)"
 		},
 		{
-			"name": "setrsclockoff",
+			"name": "**setrsclockoff**",
 			"desc": "Desliga o RSClockTracker no servidor."
 		},
 		{
-			"name": "setrsclockroles",
+			"name": "**setrsclockroles**",
 			"desc": "Cria os cargos para o RSClockTracker"
 		}
 	]
