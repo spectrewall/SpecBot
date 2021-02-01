@@ -1,7 +1,7 @@
 module.exports = {
   name: "help",
-  category: "moderation",
-  description: "creditos as pessoas responsaveis pelo bot",
+  category: "notModeration",
+  description: "Exibe todos os comandos do bot",
   run: async (client, message, args) => {
     const Discord = require("discord.js");
     const { comandos } = require("../../config.json");
@@ -12,7 +12,7 @@ module.exports = {
     let embed = new Discord.MessageEmbed()
       .setDescription("")
       .setTimestamp()
-      .setColor("1fd14f")
+      .setColor("0a1f29")
       .setTitle("COMANDOS:");
 
     msgID = await message.channel.send(embed);
@@ -28,7 +28,7 @@ module.exports = {
       let embed = new Discord.MessageEmbed()
         .setDescription(desc)
         .setTimestamp()
-        .setColor("1fd14f")
+        .setColor("0a1f29")
         .setTitle("COMANDOS:");
 
       msgID.edit(embed);
