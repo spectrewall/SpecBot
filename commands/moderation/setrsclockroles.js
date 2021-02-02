@@ -33,7 +33,6 @@ module.exports = {
       const role = await roles.cache.find(
         (role) => role.name.toLowerCase() == event.name.toLowerCase()
       );
-      console.log(event.name);
       if (role) {
         role
           .edit(
