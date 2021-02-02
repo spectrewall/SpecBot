@@ -18,6 +18,7 @@ client.aliases = new Collection();
 client.distube = new DisTube(client, {
   searchSongs: false,
   emitNewSongOnly: true,
+  leaveOnFinish: true,
 });
 
 client.distube

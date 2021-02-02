@@ -32,7 +32,6 @@ module.exports = {
         .setTitle("COMANDOS:");
 
       msgID.edit(embed);
-      console.log(descricao);
     });
   },
 };

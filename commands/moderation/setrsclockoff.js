@@ -20,7 +20,6 @@ module.exports = {
     RegisteredGuild.findOneAndDelete(
       { GUILD_ID: message.channel.guild.id },
       function (err, obj) {
-        console.log(obj);
         reply = "Esse canal não receberá mais atualizações do RSClockTracker";
         message.channel.send(reply);
       }

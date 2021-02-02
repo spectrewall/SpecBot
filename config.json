@@ -53,12 +53,36 @@
 			"desc": "Liga o RSClockTracker no canal em que for usado. (1 por servidor)"
 		},
 		{
-			"name": "**setrsclock**",
+			"name": "**setrsclockoff**",
 			"desc": "Desliga o RSClockTracker no servidor."
 		},
 		{
 			"name": "**setrsclockroles**",
-			"desc": "Cria os cargos para o RSClockTracker"
+			"desc": "Cria os cargos para o RSClockTracker."
+		},
+		{
+			"name": "**play** <nome ou link da música>",
+			"desc": "Toca uma música."
+		},
+		{
+			"name": "**pause**",
+			"desc": "Pausa a música."
+		},
+		{
+			"name": "**queue**",
+			"desc": "Mostra a fila de músicas."
+		},
+		{
+			"name": "**resume**",
+			"desc": "Tira o pause da música."
+		},
+		{
+			"name": "**skip**",
+			"desc": "Pula para a próxima música."
+		},
+		{
+			"name": "**stop**",
+			"desc": "Para a música, limpa a fila e desconecta o Bot."
 		}
 	]
 }

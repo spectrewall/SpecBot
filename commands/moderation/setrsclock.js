@@ -24,17 +24,20 @@ module.exports = {
     })
       .save()
       .then(() => {
-        console.log("Guild cadastrada com sucesso");
+        console.log(
+          `Guild ${message.channel.guild.name} ID: ${message.channel.guild.id} cadastrada com sucesso`
+        );
         reply = "Esse canal agora irá receber atualizações do RSClockTracker!";
         message.channel.send(reply);
       })
       .catch(async (err) => {
-        console.log("Houve um erro ao registrar a guild: " + err);
+        console.log(
+          "Houve um erro ao registrar a guild ${message.channel.guild.name} ID: ${message.channel.guild.id}: " +
+            err
+        );
         novaGuild.findOne(
           { GUILD_ID: message.channel.guild.id },
           async function (err, obj) {
-            console.log(obj.CHANNEL_ID);
-            //const channel = await client.channels.fetch(obj.CHANNEL_ID);
             reply =
               "Apenas um canal permitido por servidor!\nAtivo agora no canal: " +
               message.guild.channels.cache.get(obj.CHANNEL_ID).toString();
