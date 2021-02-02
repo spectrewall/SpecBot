@@ -25,7 +25,7 @@ module.exports = {
       .save()
       .then(() => {
         console.log(
-          `Guild ${message.channel.guild.name} ID: ${message.channel.guild.id} cadastrada com sucesso`
+          `Guild ${message.channel.guild.name} ID: ${message.channel.guild.id} cadastrada no mongo com sucesso`
         );
         reply = "Esse canal agora irá receber atualizações do RSClockTracker!";
         message.channel.send(reply);

@@ -3,7 +3,7 @@ const Twit = require("twit");
 const Discord = require("discord.js");
 const { Client, Collection } = Discord;
 const mongoose = require("mongoose");
-const { prefix, events } = require("./config.json");
+const { prefix, events, comandos } = require("./config.json");
 const moment = require("moment");
 const DisTube = require("distube");
 
@@ -115,7 +115,7 @@ client.on("ready", () => {
       client.channels.cache.size
     } canais, em ${client.guilds.cache.size} servidores.`
   );
-  client.user.setActivity("!help");
+  client.user.setActivity("@specbot help");
   moment.locale("pt-br");
   console.log(`Horário de inicialização: ${moment().format(`LT`)}.`);
 
@@ -124,6 +124,7 @@ client.on("ready", () => {
     .connect(process.env.MONGO_CONNECT_URL, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
+      useFindAndModify: false,
     })
     .then(() => {
       console.log("MongoDB Conectado...");
@@ -144,8 +145,21 @@ client.on("ready", () => {
     },
   });
 
+  const prefixSchema = mongoose.Schema({
+    GUILD_ID: {
+      type: String,
+      require: true,
+      unique: true,
+    },
+    PREFIX: {
+      type: String,
+      require: true,
+    },
+  });
+
   //collection
   mongoose.model("guilds", guildSchema);
+  mongoose.model("prefixes", prefixSchema);
 
   //Twitter Stream on
   const stream = T.stream("statuses/filter", {
@@ -201,24 +215,92 @@ client.on("guildDelete", async (guild) => {
       else console.log("It was not registered in Mongo.");
     }
   );
+
+  const RegisteredPrefix = await mongoose.model("prefixes");
+  await RegisteredPrefix.findOneAndDelete(
+    { GUILD_ID: guild.id },
+    function (err, obj) {
+      if (obj) console.log(obj + "Removed from Mongo.");
+      else console.log("It was not registered in Mongo.");
+    }
+  );
 });
 
 client.on("message", async (message) => {
   if (message.channel.type === "dm") return;
   if (message.author.bot) return;
-  if (!message.content.startsWith(prefix)) return;
-  if (!message.member)
-    message.member = await message.guild.fetchMember(message);
+  if (message.content.startsWith("<@!802992884436959294>")) {
+    if (!message.member)
+      message.member = await message.guild.fetchMember(message);
 
-  let args = message.content.slice(prefix.length).trim().split(/ +/g);
-  let comando = args.shift().toLowerCase();
+    let args = message.content
+      .slice("<@!802992884436959294>".length)
+      .trim()
+      .split(/ +/g);
+    let comando = args.shift().toLowerCase();
 
-  if (comando.length === 0) return;
+    if (comando.length === 0) return;
 
-  let command = client.commands.get(comando);
-  if (!command) command = client.commands.get(client.aliases.get(comando));
+    let command = client.commands.get(comando);
+    if (!command) command = client.commands.get(client.aliases.get(comando));
 
-  if (command) command.run(client, message, args);
+    if (command) command.run(client, message, args);
+  }
+  //Checking if message contain a command for DataBase access economy.
+  let flag = false;
+  comandos.forEach(async (comando) => {
+    if (
+      message.content.toLowerCase().search(comando.name) > 0 &&
+      message.content.toLowerCase().search(comando.name) <= 3
+    ) {
+      flag = true;
+    }
+  });
+  if (!flag) return;
+
+  //LOAD PREFIX FROM DB
+  const guildPrefix = mongoose.model("prefixes");
+  guildPrefix.findOne(
+    { GUILD_ID: message.channel.guild.id },
+    async function (err, result) {
+      if (err) throw err;
+      if (result) {
+        if (!message.content.startsWith(result.PREFIX)) return;
+        if (!message.member)
+          message.member = await message.guild.fetchMember(message);
+
+        let args = message.content
+          .slice(result.PREFIX.length)
+          .trim()
+          .split(/ +/g);
+        let comando = args.shift().toLowerCase();
+
+        if (comando.length === 0) return;
+
+        let command = client.commands.get(comando);
+        if (!command)
+          command = client.commands.get(client.aliases.get(comando));
+
+        if (command) command.run(client, message, args);
+      } else {
+        // USES DEFAULT PREFIX
+        if (!message.content.startsWith(prefix)) return;
+        if (!message.member)
+          message.member = await message.guild.fetchMember(message);
+
+        let args = message.content.slice(prefix.length).trim().split(/ +/g);
+        let comando = args.shift().toLowerCase();
+
+        if (comando.length === 0) return;
+
+        let command = client.commands.get(comando);
+        if (!command)
+          command = client.commands.get(client.aliases.get(comando));
+
+        if (command) command.run(client, message, args);
+      }
+    }
+  );
 });
 
 client.login(process.env.TOKEN);

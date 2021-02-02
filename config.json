@@ -49,40 +49,48 @@
 	],
 	"comandos": [
 		{
-			"name": "**setrsclock**",
+			"name": "setrsclock",
 			"desc": "Liga o RSClockTracker no canal em que for usado. (1 por servidor)"
 		},
 		{
-			"name": "**setrsclockoff**",
+			"name": "setrsclockoff",
 			"desc": "Desliga o RSClockTracker no servidor."
 		},
 		{
-			"name": "**setrsclockroles**",
+			"name": "setrsclockroles",
 			"desc": "Cria os cargos para o RSClockTracker."
 		},
 		{
-			"name": "**play** <nome ou link da música>",
-			"desc": "Toca uma música."
+			"name": "play",
+			"desc": "Toca uma música. **Play** nome/link_da_musica"
 		},
 		{
-			"name": "**pause**",
+			"name": "pause",
 			"desc": "Pausa a música."
 		},
 		{
-			"name": "**queue**",
+			"name": "queue",
 			"desc": "Mostra a fila de músicas."
 		},
 		{
-			"name": "**resume**",
+			"name": "resume",
 			"desc": "Tira o pause da música."
 		},
 		{
-			"name": "**skip**",
+			"name": "skip",
 			"desc": "Pula para a próxima música."
 		},
 		{
-			"name": "**stop**",
+			"name": "stop",
 			"desc": "Para a música, limpa a fila e desconecta o Bot."
+		},
+		{
+			"name": "prefix",
+			"desc": "Troca o prefixo de comandos do servidor."
+		},
+		{
+			"name": "help",
+			"desc": "Esse comando aqui 😎👌."
 		}
 	]
 }

@@ -20,6 +20,9 @@ module.exports = {
     RegisteredGuild.findOneAndDelete(
       { GUILD_ID: message.channel.guild.id },
       function (err, obj) {
+        console.log(
+          `Guild ${message.channel.guild.name} ID: ${message.channel.guild.id} removida do mongo com sucesso`
+        );
         reply = "Esse canal não receberá mais atualizações do RSClockTracker";
         message.channel.send(reply);
       }
