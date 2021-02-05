@@ -1,17 +1,9 @@
 module.exports = {
   name: "radiomode",
-  category: "Moderation",
+  category: "notModeration",
   description: "toggle radio mode (on/off)",
   aliases: ["r"],
   run: async (client, message, args) => {
-    if (
-      !message.channel.guild
-        .member(message.author)
-        .hasPermission("ADMINISTRATOR")
-    ) {
-      message.channel.send("Comando exclusivo para administradores!");
-      return;
-    }
     if (!message.member.voice.channel)
       return message.channel.send(
         "Você precisa estar em um canal de voz para usar este comando."
