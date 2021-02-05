@@ -3,6 +3,7 @@ SPECBOT
 Contato: Wallace#6054
 
 Prefixo Padrão/Default Prefix: ! or/ou @SpecBot
+
 COMANDOS/COMMANDS:
 
     Runescape:
