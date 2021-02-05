@@ -91,6 +91,10 @@
 		{
 			"name": "help",
 			"desc": "Esse comando aqui 😎👌."
+		},
+		{
+			"name": "radiomode",
+			"desc": "Liga/Desliga o modo rádio (toca músicas relacionadas a música atual da fila automaticamente)."
 		}
 	]
 }

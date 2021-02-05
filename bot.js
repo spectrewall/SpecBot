@@ -89,6 +89,10 @@ client.distube
       .setTitle("PlayList Adicionada!");
 
     msgID = await message.channel.send(embed);
+  })
+  .on("initQueue", (queue) => {
+    queue.autoplay = false;
+    queue.volume = 100;
   });
 
 //TWIT SETTINGS

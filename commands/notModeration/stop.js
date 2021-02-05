@@ -2,7 +2,6 @@ module.exports = {
   name: "stop",
   category: "notModeration",
   description: "Para a música",
-  aliases: [],
   run: async (client, message, args) => {
     if (!message.member.voice.channel)
       return message.channel.send(

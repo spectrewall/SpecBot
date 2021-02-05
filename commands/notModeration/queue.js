@@ -2,7 +2,7 @@ module.exports = {
   name: "queue",
   category: "notModeration",
   description: "Manda no chat a fila de músicas",
-  aliases: ["s"],
+  aliases: ["q"],
   run: async (client, message, args) => {
     const Discord = require("discord.js");
     let queue = await client.distube.getQueue(message);
