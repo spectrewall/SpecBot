@@ -2,7 +2,6 @@ module.exports = {
   name: "pause",
   category: "notModeration",
   description: "pausa a música",
-  aliases: ["p"],
   run: async (client, message, args) => {
     if (!message.member.voice.channel)
       return message.channel.send(
