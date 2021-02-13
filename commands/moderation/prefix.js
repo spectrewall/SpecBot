@@ -5,7 +5,9 @@ module.exports = {
   run: async (client, message, args) => {
     const Discord = require("discord.js");
     const mongoose = require("mongoose");
+    const { errorSend } = require("../../utils");
 
+    //Permission check
     if (
       !message.channel.guild
         .member(message.author)
@@ -15,6 +17,7 @@ module.exports = {
       return;
     }
 
+    //Args check for this commands an arg is necessary, and i limited it to 1 - 3 length prefix
     if (!args[0]) {
       message.channel.send(
         "Para esse comando é necessário um argumento Ex: @SpecBot Prefix Novo_Prefixo"
@@ -28,34 +31,38 @@ module.exports = {
       return;
     }
 
-    let reply;
-    const novaGuild = mongoose.model("prefixes");
-
-    new novaGuild({
-      GUILD_ID: message.channel.guild.id,
-      PREFIX: args[0],
-    })
-      .save()
-      .then(() => {
-        console.log(
-          `PrefixGuild ${message.channel.guild.name} ID: ${message.channel.guild.id} cadastrada com sucesso`
-        );
-        reply = `Prefixo dos comandos trocado para: ${args[0]}`;
-        message.channel.send(reply);
+    //Prefix command
+    try {
+      let reply;
+      const novaGuild = mongoose.model("prefixes");
+      new novaGuild({
+        GUILD_ID: message.channel.guild.id,
+        PREFIX: args[0],
       })
-      .catch(async (err) => {
-        novaGuild
-          .findOneAndUpdate(
-            { GUILD_ID: message.channel.guild.id },
-            { PREFIX: args[0] }
-          )
-          .then(() => {
-            console.log(
-              `PrefixGuild ${message.channel.guild.name} ID: ${message.channel.guild.id} cadastrada com sucesso`
-            );
-            reply = `Prefixo dos comandos trocado para: ${args[0]}`;
-            message.channel.send(reply);
-          });
-      });
+        .save()
+        .then(() => {
+          console.log(
+            `PrefixGuild ${message.channel.guild.name} ID: ${message.channel.guild.id} cadastrada com sucesso`
+          );
+          reply = `Prefixo dos comandos trocado para: ${args[0]}`;
+          message.channel.send(reply);
+        })
+        .catch(async (err) => {
+          novaGuild
+            .findOneAndUpdate(
+              { GUILD_ID: message.channel.guild.id },
+              { PREFIX: args[0] }
+            )
+            .then(() => {
+              console.log(
+                `PrefixGuild ${message.channel.guild.name} ID: ${message.channel.guild.id} cadastrada com sucesso`
+              );
+              reply = `Prefixo dos comandos trocado para: ${args[0]}`;
+              message.channel.send(reply);
+            });
+        });
+    } catch (err) {
+      errorSend(client, err, "ERRO NO COMANDO PREFIX", true, message);
+    }
   },
 };

@@ -3,9 +3,10 @@ module.exports = {
   category: "moderation",
   description: "sets rsclocktracker at the channel it command was called",
   run: async (client, message, args) => {
-    const Discord = require("discord.js");
     const mongoose = require("mongoose");
+    const { errorSend } = require("../../utils");
 
+    //Permission check
     if (
       !message.channel.guild
         .member(message.author)
@@ -15,7 +16,7 @@ module.exports = {
       return;
     }
 
-    let reply;
+    //setrsclock command
     const novaGuild = mongoose.model("guilds");
 
     new novaGuild({
@@ -27,8 +28,9 @@ module.exports = {
         console.log(
           `Guild ${message.channel.guild.name} ID: ${message.channel.guild.id} cadastrada no mongo com sucesso`
         );
-        reply = "Esse canal agora irá receber atualizações do RSClockTracker!";
-        message.channel.send(reply);
+        message.channel.send(
+          "Esse canal agora irá receber atualizações do RSClockTracker!"
+        );
       })
       .catch(async (err) => {
         console.log(
@@ -38,10 +40,11 @@ module.exports = {
         novaGuild.findOne(
           { GUILD_ID: message.channel.guild.id },
           async function (err, obj) {
-            reply =
+            message.channel.send(
               "Apenas um canal permitido por servidor!\nAtivo agora no canal: " +
-              message.guild.channels.cache.get(obj.CHANNEL_ID).toString();
-            message.channel.send(reply);
+                message.guild.channels.cache.get(obj.CHANNEL_ID).toString()
+            );
+            errorSend(client, err, "ERRO NO SETRSCLOCK.", true, message);
           }
         );
       });
