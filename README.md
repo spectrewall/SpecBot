@@ -55,3 +55,4 @@ COMANDOS/COMMANDS:
         - help:
             Mostra a lista de comandos e o prefixo do servidor.
             Show the command list and the server prefix.
+            
