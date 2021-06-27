@@ -14,6 +14,10 @@ module.exports = {
 
     const music = args.join(" ");
 
-    client.distube.play(message, music);
+    try {
+      client.distube.play(message, music);
+    } catch (err) {
+      console.log(err.message);
+    }
   },
 };
