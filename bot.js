@@ -16,14 +16,13 @@ client.aliases = new Collection();
 //DISTUBE
 
 client.distube = new DisTube(client, {
-  searchSongs: false,
+  searchSongs: true,
   emitNewSongOnly: true,
   leaveOnFinish: true,
 });
 
 client.distube
   .on("playSong", async (message, queue, song) => {
-    let msgID;
     let embed = new Discord.MessageEmbed()
       .setDescription(
         `[${song.name}](${song.url})\nDuração: ${song.formattedDuration}`
@@ -37,10 +36,9 @@ client.distube
       .setThumbnail(song.thumbnail)
       .setTitle("Tocando Agora");
 
-    msgID = await message.channel.send(embed);
+    await message.channel.send(embed);
   })
   .on("addSong", async (message, queue, song) => {
-    let msgID;
     let embed = new Discord.MessageEmbed()
       .setDescription(
         `[${song.name}](${song.url})\nDuração: ${song.formattedDuration}`
@@ -54,10 +52,9 @@ client.distube
       .setThumbnail(song.thumbnail)
       .setTitle("Adicionado a Fila!");
 
-    msgID = await message.channel.send(embed);
+    await message.channel.send(embed);
   })
   .on("addList", async (message, queue, playlist) => {
-    let msgID;
     let embed = new Discord.MessageEmbed()
       .setDescription(
         `[${playlist.name}](${playlist.url})\n${playlist.songs.length} Músicas`
@@ -71,10 +68,9 @@ client.distube
       .setThumbnail(playlist.thumbnail.url)
       .setTitle("PlayList Adicionada!");
 
-    msgID = await message.channel.send(embed);
+    await message.channel.send(embed);
   })
   .on("playList", async (message, queue, playlist, song) => {
-    let msgID;
     let embed = new Discord.MessageEmbed()
       .setDescription(
         `[${playlist.name}](${playlist.url})\n${playlist.songs.length} Músicas\n\n**Tocando Agora**\n[${song.name}](${song.url})\nDuração: ${song.formattedDuration}`
@@ -88,7 +84,7 @@ client.distube
       .setThumbnail(song.thumbnail)
       .setTitle("PlayList Adicionada!");
 
-    msgID = await message.channel.send(embed);
+    await message.channel.send(embed);
   })
   .on("initQueue", (queue) => {
     queue.autoplay = false;
